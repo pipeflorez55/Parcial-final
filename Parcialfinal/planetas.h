@@ -14,7 +14,6 @@ public:
      void get_posiciones(float xotro2,float yotro2,float xotro3,float yotro3,float xotro4,float yotro4,float xotro5,float yotro5);
      void actualizar(float v_lim);
     QRectF boundingRect() const;
-     bool coliplaneta();
      void set_valores(float xi,float yi,float vxi,float vyi,float masa,float radioi);
     planetas();
 private:
