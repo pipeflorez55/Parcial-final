@@ -38,7 +38,7 @@ private:
     float dt;
     int h_limit;
     int v_limit;
-    planetas *planeta1;
+    planetas *planeta1,*planeta2,*planeta3,*planeta4,*planeta5;
     Ui::MainWindow *ui;
     void bordercollision(Fisicacaen *b);
     QList<Bolascaen*>bars;

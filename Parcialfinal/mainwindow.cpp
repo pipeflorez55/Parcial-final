@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     srand(time(NULL));
     ui->setupUi(this);
     v_limit=481;
@@ -15,7 +16,20 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(this);//crea escena
     scene->setSceneRect(0,0,h_limit,v_limit);//limites de la escena
     planeta1= new planetas;
+    planeta1->set_valores(0,0,0,0,50000,200);
     scene->addItem(planeta1);
+    planeta2= new planetas;
+    planeta2->set_valores(-5000,0,0,-2,70,70);
+    scene->addItem(planeta2);
+    planeta3= new planetas;
+    planeta3->set_valores(5000,0,0,2,70,70);
+    scene->addItem(planeta3);
+    planeta4= new planetas;
+    planeta4->set_valores(0,-5000,2,0,70,70);
+    scene->addItem(planeta4);
+    planeta5= new planetas;
+    planeta5->set_valores(0,5000,-2,0,70,70);
+    scene->addItem(planeta5);
 
     ui->graphicsView->setScene(scene);//añade la escena al graphicsview
     //ui->centralwidget->adjustSize();//se ajusta al tamaño
@@ -33,7 +47,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::actualizar()
 {
+
+    planeta1->get_posiciones(planeta2->push_x(),planeta2->push_y(),planeta3->push_x(),planeta3->push_y(),planeta4->push_x(),planeta4->push_y(),planeta5->push_x(),planeta5->push_y());
+    planeta2->get_posiciones(planeta1->push_x(),planeta1->push_y(),planeta3->push_x(),planeta3->push_y(),planeta4->push_x(),planeta4->push_y(),planeta5->push_x(),planeta5->push_y());
+    planeta3->get_posiciones(planeta2->push_x(),planeta2->push_y(),planeta1->push_x(),planeta1->push_y(),planeta4->push_x(),planeta4->push_y(),planeta5->push_x(),planeta5->push_y());
+    planeta4->get_posiciones(planeta2->push_x(),planeta2->push_y(),planeta3->push_x(),planeta3->push_y(),planeta1->push_x(),planeta1->push_y(),planeta5->push_x(),planeta5->push_y());
+    planeta5->get_posiciones(planeta2->push_x(),planeta2->push_y(),planeta3->push_x(),planeta3->push_y(),planeta4->push_x(),planeta4->push_y(),planeta1->push_x(),planeta1->push_y());
     planeta1->actualizar(v_limit);
+    planeta2->actualizar(v_limit);
+    planeta3->actualizar(v_limit);
+    planeta4->actualizar(v_limit);
+    planeta5->actualizar(v_limit);
+
     for (int i=0;i<bars.size();i++) {
     bars.at(i)->actualizar(v_limit);
     bordercollision(bars.at(i)->getEsf());
