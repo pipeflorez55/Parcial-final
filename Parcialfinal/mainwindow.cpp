@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include<time.h>
 
-int flag=0, vo=0, angulo=0,cont=0;
+int flag=0, vely=0, velx=0,cont=0;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     scene = new QGraphicsScene(this);//crea escena
     scene->setSceneRect(0,0,h_limit,v_limit);//limites de la escena
+    planeta1= new planetas;
+    scene->addItem(planeta1);
 
     ui->graphicsView->setScene(scene);//añade la escena al graphicsview
     //ui->centralwidget->adjustSize();//se ajusta al tamaño
@@ -31,7 +33,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::actualizar()
 {
-
+    planeta1->actualizar(v_limit);
     for (int i=0;i<bars.size();i++) {
     bars.at(i)->actualizar(v_limit);
     bordercollision(bars.at(i)->getEsf());
@@ -47,7 +49,7 @@ void MainWindow::on_cae_clicked()
     bars.back()->actualizar(v_limit);
     scene->addItem(bars.back());  // añadir bala a la escena
     Fisicacaen *b = bars.at(cont)->getEsf(); // crear las fisicas de la bala
-    b->set_vel(vo,angulo,Posix,481);
+    b->set_vel(velx,vely,Posix,481);
     b->Newgra(gravi);
     cont++;
 }

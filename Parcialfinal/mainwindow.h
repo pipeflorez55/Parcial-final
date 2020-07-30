@@ -14,6 +14,7 @@
 #include "QTimer"
 #include<stdlib.h>
 #include<time.h>
+#include"planetas.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -37,6 +38,7 @@ private:
     float dt;
     int h_limit;
     int v_limit;
+    planetas *planeta1;
     Ui::MainWindow *ui;
     void bordercollision(Fisicacaen *b);
     QList<Bolascaen*>bars;

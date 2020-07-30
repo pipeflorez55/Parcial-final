@@ -19,12 +19,14 @@ SOURCES += \
     bolascaen.cpp \
     fisicacaen.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    planetas.cpp
 
 HEADERS += \
     bolascaen.h \
     fisicacaen.h \
-    mainwindow.h
+    mainwindow.h \
+    planetas.h
 
 FORMS += \
     mainwindow.ui

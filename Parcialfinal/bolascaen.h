@@ -4,7 +4,7 @@
 #include "QGraphicsItem"
 #include "QGraphicsScene"
 #include "fisicacaen.h"
-
+#include "planetas.h"
 
 
 class Bolascaen: public QGraphicsItem
@@ -17,8 +17,7 @@ public:
     void setEcala(float s);
     void actualizar(float v_lim);
     Fisicacaen *getEsf();
-    bool coli();
-    bool colistar();
+    bool coliplaneta();
     bool increase;
 private:
     Fisicacaen *esf;

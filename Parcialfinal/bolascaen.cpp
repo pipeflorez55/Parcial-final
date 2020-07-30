@@ -4,8 +4,8 @@
 Bolascaen::Bolascaen(): escala(1)
 {
     float posx,posy,velx,vely,r,mass,K,e;
-    posx = 32;
-    posy = 150;
+    posx =-100;
+    posy =-100;
     r = 7;
     mass = 500;
     velx = 0;
@@ -41,8 +41,8 @@ void Bolascaen::actualizar(float v_lim)
 {
     esf->actualizar();
     setPos(esf->get_PosX(),(v_lim-esf->get_PosY()));
-    increase=coli();
-    colistar();
+
+    coliplaneta();
 
 }
 
@@ -51,41 +51,22 @@ Fisicacaen *Bolascaen::getEsf()
     return esf;
 }
 
-bool Bolascaen::coli()
+
+bool Bolascaen::coliplaneta()
 {
+        QList<QGraphicsItem *> colliding_items = collidingItems();
+        for(int i = 0, n = colliding_items.size(); i < n; i++){
+            if(typeid(*(colliding_items[i])) == typeid (planetas)){
 
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-//    for(int i = 0, n = colliding_items.size(); i < n; i++){
-//        if(typeid(*(colliding_items[i])) == typeid (enemy)){
+                //Increase score
 
-//            //Increase score
-
-//            //remove
-//            colliding_items[i]->setPos(-100,-100);
-//            //delete
-//            return true;
+                //remove
+                scene()->removeItem(this);
 
 
-//        }
-//    }
-    return false;
-
-
-}
-
-bool Bolascaen::colistar()
-{
-//    QList<QGraphicsItem *> colliding_items = collidingItems();
-//    for(int i = 0, n = colliding_items.size(); i < n; i++){
-//        if(typeid(*(colliding_items[i])) == typeid (Circular)){
-
-//            //Increase score
-
-//            //remove
-//            scene()->removeItem(this);
-//            //delete
-//        }
-//    }
+                //delete
+            }
+        }
 //    for(int i = 0, n = colliding_items.size(); i < n; i++){
 //        if(typeid(*(colliding_items[i])) == typeid (Pendulo)){
 
